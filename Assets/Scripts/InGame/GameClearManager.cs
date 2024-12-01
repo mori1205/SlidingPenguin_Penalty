@@ -2,11 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/* 追加 */
-using System.Runtime.InteropServices;
-using System.Collections.Generic;
-using UnityEngine.UI;
-/* */
 
 namespace penguin
 {
@@ -33,11 +28,6 @@ namespace penguin
 
     // InGameシーンのUIスイッチ処理を扱うクラス
     [SerializeField] private InGameUISwitcher inGameUISwitcher;
-
-    /* 追加 */
-    [DllImport("__Internal")]
-    private static extern void StartMist();
-    /* */
 
     private void Start()
     {
@@ -91,7 +81,7 @@ namespace penguin
 
     public static bool IsClear()
     {
-      StartMist();
+
       return IsSuccess;
     }
   }

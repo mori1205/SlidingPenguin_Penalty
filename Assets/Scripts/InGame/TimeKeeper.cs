@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/* 追加 */
+using System.Runtime.InteropServices;
+using System.Collections.Generic;
+using UnityEngine.UI;
+/* */
+
 namespace penguin
 {
   public class TimeKeeper : MonoBehaviour
@@ -29,6 +35,11 @@ namespace penguin
 
     // SE再生・停止クラス
     [SerializeField] private InGameAudio audio;
+
+    /* 追加 */
+    [DllImport("__Internal")]
+    private static extern void StartMist();
+    /* */
 
 
     // Start is called before the first frame update
@@ -58,6 +69,9 @@ namespace penguin
       if (remainingTime <= 0)
       {
         statusManager.CurrentStatus = InGameStatus.TimeUp;
+        
+        //噴射開始
+        StartMist();
         // ゲームオーバー時の処理を呼ぶ。
         gameOverManager.GameOver(GameOverType.TIMEUP);
       }
