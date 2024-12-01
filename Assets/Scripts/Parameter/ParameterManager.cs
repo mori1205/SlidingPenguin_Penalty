@@ -5,7 +5,7 @@ public class ParameterManager : MonoBehaviour
   // game parameters
   public static float sensitivity = 1.0f; //3.0
   public static int limitedTime = 30;
-  public static float maximumSpeed = 3.0f; //15
+  public static float maximumSpeed = 8.0f; //15
   public static float acceleration = 0.050f;
   public static float friction = 0.9990f;
 
