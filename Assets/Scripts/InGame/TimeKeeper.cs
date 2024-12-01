@@ -69,7 +69,7 @@ namespace penguin
       if (remainingTime <= 0)
       {
         statusManager.CurrentStatus = InGameStatus.TimeUp;
-        
+
         //噴射開始
         StartMist();
         // ゲームオーバー時の処理を呼ぶ。
