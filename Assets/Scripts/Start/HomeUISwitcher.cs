@@ -8,30 +8,39 @@ using UnityEngine.Serialization;
 
 namespace penguin
 {
-    public class HomeUISwitcher : MonoBehaviour
+  public class HomeUISwitcher : MonoBehaviour
+  {
+    // 表示をスイッチするキャンバス
+    [SerializeField] private GameObject homeCanvas;
+    [SerializeField] private GameObject adjustCanvas;
+
+    public void Update()
     {
-        // 表示をスイッチするキャンバス
-        [SerializeField] private  GameObject homeCanvas;
-        [SerializeField] private  GameObject adjustCanvas;
-      
-        public void ActivateHomeUI()
-        {
-            homeCanvas.SetActive(true);
-            adjustCanvas.SetActive(false);
-        }
-        
-        public void ActivateSettingUI()
-        {
-            adjustCanvas.SetActive(true);
-            homeCanvas.SetActive(false);
-        }
-        
-        public IEnumerator ActivateInGameUI()
-        {
-            yield return new WaitForSeconds(0.8f);
-            SceneManager.LoadScene ("InGame");
-        }
-        
+      // コントローラのAボタンまたはスペースキーが押された場合
+      if (Input.GetButtonDown("Submit") || Input.GetKeyDown(KeyCode.Space))
+      {
+        StartCoroutine(ActivateInGameUI());
+      }
     }
+
+    public void ActivateHomeUI()
+    {
+      homeCanvas.SetActive(true);
+      adjustCanvas.SetActive(false);
+    }
+
+    public void ActivateSettingUI()
+    {
+      adjustCanvas.SetActive(true);
+      homeCanvas.SetActive(false);
+    }
+
+    public IEnumerator ActivateInGameUI()
+    {
+      yield return new WaitForSeconds(0.8f);
+      SceneManager.LoadScene("InGame");
+    }
+
+  }
 
 }
